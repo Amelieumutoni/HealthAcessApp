@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";  // Import dotenv
 import mongoose from "mongoose";  // Import mongoose
+import connectCloudinary from "./config/cloudinary.js";
 
 dotenv.config();  // Load .env variables
 
@@ -16,6 +17,8 @@ mongoose
   .connect(uri)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Error connecting to MongoDB:", err));
+
+connectCloudinary();
 
 // Middlewares
 app.use(express.json());
